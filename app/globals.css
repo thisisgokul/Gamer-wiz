@@ -2,32 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .max-container {
+    max-width: 1440px;
+    margin: 0 auto 40px; /* Added 40px margin to the bottom, you can adjust the value as needed */
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .padding {
+    @apply sm:px-16 px-8 sm:py-24 py-12;
   }
+
+  .padding-x {
+    @apply sm:px-16 px-8;
+  }
+
+  .padding-y {
+    @apply sm:py-24 py-12;
+  }
+
+  .padding-l {
+    @apply sm:pl-16 pl-8;
+  }
+
+  .padding-r {
+    @apply sm:pr-16 pr-8;
+  }
+
+  .padding-t {
+    @apply sm:pt-24 pt-12;
+  }
+
+  .padding-b {
+    @apply sm:pb-24 pb-12;
+  }
+
+  .infotext {
+    @apply text-slate-gray text-sm sm:text-lg leading-7;
+  }
+  .btnHover{
+    @apply  hover:scale-105 transform transition duration-300 ease-in-out
+  }
+  .inputs{
+    @apply w-full px-3 py-2 mt-1 border-2 rounded-xl focus:outline-none focus:border-coral-blue
+  }
+  .navlinks{
+    @apply px-4 py-2 text-[#ffff] text-lg font-semibold hover:text-[#adff2f]
+  }
+  .tabs {
+    @apply bg-gray-500 text-gray-50 px-5 py-2 rounded-3xl mr-2 btnHover text-lg;
+  }
+  
+  .Activetabs {
+    @apply bg-coral-blue text-gray-50 px-5 py-2 rounded-3xl mr-2 btnHover text-lg;
+  }
+  
+  
+  @media (max-width: 640px) {
+    .tabs,
+    .Activetabs {
+      @apply px-2 py-1 text-sm;
+    }
+  }
+
+  @keyframes heroMove {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-16px);
+    }
+    100% {
+      transform: translateY(16px); 
+    }
+  }
+  
+  .animate-heroMove {
+    animation: heroMove 3s infinite;
+  }
+  
+  
+  
+  
 }
