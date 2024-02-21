@@ -4,9 +4,12 @@ import Loader from "@/components/helpers/loader";
 import { compatibleDevices } from "@/app/constants";
 import { CardItems } from "@/types";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { MdCategory } from "react-icons/md";
+import { toast } from "sonner";
+import { useSession } from "next-auth/react";
+import { loadScript } from "@/lib/utils";
 
 const SinglePage = () => {
   const { id } = useParams();
@@ -14,8 +17,17 @@ const SinglePage = () => {
   const [item, setItem] = useState<CardItems | null>(null);
   const [loading, setLoading] = useState(false);
 
+  const session = useSession();
+  const { status } = session;
+  const userData = session.data?.user;
+  let email = userData?.email;
+  let userName = userData?.name;
+
+  const router = useRouter();
+
   useEffect(() => {
     fetchCategoryById();
+    loadScript("https://checkout.razorpay.com/v1/checkout.js");
   }, []);
 
   function fetchCategoryById() {
@@ -33,6 +45,61 @@ const SinglePage = () => {
       });
     } catch (error) {}
   }
+
+  const handlePayment = async () => {
+    try {
+     
+      if (status === "unauthenticated") {
+        toast.error("please login to continue");
+        router.push("/");
+        return;
+      }
+      toast.info("loading payment please wait")
+      const response = await axios.post("/api/create-payment", {
+        amount: item?.price,
+      });
+      const order = response.data;
+  
+      const options = {
+        key: process.env.NEXT_PUBLIC_key_id,
+        amount: item?.price,
+        currency: "INR",
+        name: "GamerWiz pvt limited",
+        description: "Game Payment",
+       
+        order_id: order.id,
+        handler: function () {
+          createOrder();
+         
+        },
+        prefill: {
+          email: email,
+        },
+      };
+      const paymentObject = new (window as any).Razorpay(options);
+      paymentObject.open();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createOrder = async () => {
+    try {
+      const data = {
+        userName: userName,
+        email: email,
+        picture:pictures[0],
+        itemName: item?.name,
+        price: item?.price
+      };
+       await axios.post("/api/create-order/", data);
+        router.push("/")
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
   return (
     <div className="sm:h-full h-screen">
       {loading ? (
@@ -78,7 +145,9 @@ const SinglePage = () => {
                   </div>
                 </div>
                 <div className="flex justify-center text-black font-bold text-lg items-center btnHover my-5">
-                  <button className="bg-yellowGreen  w-1/2 p-2 rounded-full mt-2">
+                  <button
+                  onClick={handlePayment}
+                  className="bg-yellowGreen  w-1/2 p-2 rounded-full mt-2">
                     Buy ₹{item?.price}
                   </button>
                 </div>

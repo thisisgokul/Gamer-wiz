@@ -54,3 +54,12 @@ export interface User {
   image?: string;
   admin: boolean;
 }
+
+export type Order = {
+  _id: string;
+  itemName: string;
+  userName: string;
+  email: string;
+  price: number;
+  picture:string;
+}
