@@ -3,8 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Google from "@/public/Google2.png";
-import axios from "axios";
-import { toast } from "sonner";
 import { signIn } from "next-auth/react";
 
 const Loginpage = () => {
