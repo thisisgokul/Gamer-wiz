@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import axios from "axios";
 import Loader from "../helpers/loader";
 import { BiSearch } from "react-icons/bi";
 import { CardItems } from "@/types";
@@ -48,7 +47,7 @@ const HeroItems = () => {
       <div className="relative h-60 md:h-auto w-full col-span-1">
         <Image src={heroitem1} alt="Hero Item 1" />
       </div>
-      <div className="text-center   md:text-left col-span-1 md:col-span-1">
+      <div className="text-center md:text-left col-span-1 md:col-span-1">
         <h2 className="text-4xl font-bold mb-4 text-secondary">
           Explore and Order Now!
         </h2>

@@ -13,14 +13,15 @@ const Hero = () => {
           Dive into a world of unparalleled gaming experiences. Discover the latest titles,
           connect with fellow gamers, and elevate your gaming adventure to new heights.
         </p>
-        <div className="flex gap-4">
-          <button className="bg-coral-blue px-4 py-2 rounded-full flex btnHover text-primary">
-            Order now <span><Image src={arrow} alt="arrow"/></span>
-          </button>
-          <button className="bg-secondary text-white px-4 py-2 rounded-full">
-            Explore More
-          </button>
-        </div>
+        <div className="flex gap-2">
+  <button className="bg-coral-blue px-3 py-1 rounded-full flex btnHover text-primary text-sm md:px-4 md:py-2 md:text-base">
+    Order now <span><Image src={arrow} alt="arrow"/></span>
+  </button>
+  <button className="bg-secondary text-white px-3 py-1 rounded-full text-sm md:px-4 md:py-2 md:text-base">
+    Explore More
+  </button>
+</div>
+
       </div>
       <div className="relative h-60 sm:h-[600px] w-full overflow-hidden">
         <div className="animate-heroMove ">
