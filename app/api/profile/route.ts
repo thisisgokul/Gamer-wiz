@@ -1,9 +1,9 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { connectDatabase } from "@/lib/database";
 import User from "@/lib/database/modals/user.modal";
 import { handleError } from "@/lib/utils";
 import UserInfo from "@/lib/database/modals/userInfo.modal";
+import { authOptions } from "@/app/utils/authOptions";
 
 export async function PUT(request:Request) {
   try {
