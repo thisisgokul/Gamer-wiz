@@ -72,15 +72,17 @@ const HeroItems = () => {
       </div>
 
       <div className="col-span-3 md:col-span-3 padding-x flex flex-col md:flex-row md:items-center md:justify-evenly">
-        <div className="mb-4 md:mb-0 relative flex items-center">
+        <div className="mb-4 md:mb-0  relative flex items-center">
           <input
             type="text"
             placeholder="Search Games..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="sm:px-14 px-0 py-2 border mt-2 text-xl border-yellowGlight rounded-md focus:outline-none bg-metalicblack text-white"
+            className="sm:px-14 px-0 py-2 border mt-2 text-xl border-yellowGlight rounded-md
+             focus:outline-none bg-metalicblack text-white"
           />
-          <div className="ml-2 text-yellowGlight bg-metalicblack px-2 py-2 border-2 border-yellowGreen rounded-md mt-2">
+          <div className="ml-2 text-yellowGlight bg-metalicblack
+           px-2 py-2 border-2 border-yellowGreen rounded-md mt-2 ">
             <BiSearch size={28} />
           </div>
         </div>
