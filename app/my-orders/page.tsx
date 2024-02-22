@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import OrderItem from "@/components/helpers/OrderItem";
 import { Order } from "@/types";
+import Footer from "@/components/shared/Footer";
 
 const MyOrderPage: React.FC = () => {
   const [items, setItems] = useState<Order[]>([]);
@@ -27,16 +28,19 @@ const MyOrderPage: React.FC = () => {
   }, [userEmail]);
 
   return (
-    <div className="container bg-darkBlack h-screen px-4 py-8 mx-auto flex flex-col items-center">
-      <h1 className="text-3xl font-bold mb-4 text-zinc-300">My Orders</h1>
-      {loading ? (
-        <div className="flex justify-center items-center">
-          <Loader />
-        </div>
-      ) : (
-        items.map((order) => <OrderItem key={order._id} order={order} />)
-      )}
-    </div>
+    <>
+      <div className="container bg-darkBlack h-screen px-4 py-8 mx-auto flex flex-col items-center">
+        <h1 className="text-3xl font-bold mb-4 text-zinc-300">My Orders</h1>
+        {loading ? (
+          <div className="flex justify-center items-center">
+            <Loader />
+          </div>
+        ) : (
+          items.map((order) => <OrderItem key={order._id} order={order} />)
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 

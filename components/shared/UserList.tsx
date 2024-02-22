@@ -11,7 +11,7 @@ interface UserListProps {
 }
 
 const UserList: React.FC<UserListProps> = ({ onchange, userData }) => {
-  const secret = "gokulsubashwydnov@gmail.com"; // put it inside the env
+  const secret =process.env.NEXT_PUBLIC_ADMIN;
   return (
     <>
       <div className="flex flex-grow flex-col items-center gap-4 px-4 py-4">

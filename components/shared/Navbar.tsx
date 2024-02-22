@@ -34,9 +34,14 @@ const Navbar = () => {
             Home
           </Link>
           {status === "authenticated" && (
-            <Link className="navlinks " href="/profile">
-              Profile
-            </Link>
+            <>
+              <Link className="navlinks " href="/profile">
+                Profile
+              </Link>
+              <Link className="navlinks " href="/my-orders">
+                My-Orders
+              </Link>
+            </>
           )}
           <Link className="navlinks" href="/about">
             About
@@ -66,9 +71,14 @@ const Navbar = () => {
                 Home
               </Link>
               {status === "authenticated" && (
-                <Link className="navlinks " href="/profile">
-                  Profile
-                </Link>
+                <>
+                  <Link className="navlinks " href="/profile">
+                    Profile
+                  </Link>
+                  <Link className="navlinks " href="/my-orders">
+                    My-Orders
+                  </Link>
+                </>
               )}
               <Link className="navlinks" href="/about">
                 About
@@ -79,10 +89,9 @@ const Navbar = () => {
             </nav>
             <div className="relative">
               <div className="flex items-center">
-                <Link className="flex gap-3  items-center" href={"/profile"}>
+                <Link className="flex gap-3 items-center" href={"/profile"}>
                   <h2 className="text-white font-bold italic">{userName}</h2>
                 </Link>
-
                 <Image
                   onClick={handleProfileClick}
                   src={userData?.image || defaultImage}
@@ -95,12 +104,14 @@ const Navbar = () => {
               </div>
               <button
                 onClick={() => signOut()}
-                className="sm:hidden mt-2 w-full py-1 text-gray-50 text-center bg-secondary rounded-full"
+                className="sm:hidden mt-2 w-full py-1 text-gray-50 text-center
+                 bg-secondary rounded-full"
               >
                 Logout
               </button>
               {showProfileOptions && (
-                <div className="absolute top-full right-0 mt-3 sm:block hidden bg-white shadow-md rounded-md py-2 w-40 sm:w-auto">
+                <div className="absolute top-full z-50 right-0 mt-3 sm:block hidden
+                 bg-white shadow-md rounded-md py-2 w-40 sm:w-auto">
                   <Link
                     href="/profile"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"

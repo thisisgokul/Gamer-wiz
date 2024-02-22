@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useSession } from "next-auth/react";
 import { loadScript } from "@/lib/utils";
 import SingleItemTab from "@/components/shared/SingleItemTab";
+import Footer from "@/components/shared/Footer";
 
 const SinglePage = () => {
   const { id } = useParams();
@@ -122,6 +123,7 @@ const SinglePage = () => {
         <>
           <Carousel images={pictures} />
           <SingleItemTab item={item} onclick={handlePayment} />
+          <Footer/>
         </>
       )}
     </div>
