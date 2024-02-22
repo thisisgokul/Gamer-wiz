@@ -1,25 +1,21 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Google from "@/public/Google2.png";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true)
-    await signIn('credentials',{email,password,callbackUrl:'/'})
-    setLoading(false)
-
+    setLoading(true);
+    await signIn("credentials", { email, password, callbackUrl: "/" });
+    setLoading(false);
   };
-
- 
 
   return (
     <div className="padding bg-gray-100">
@@ -39,6 +35,7 @@ const Loginpage = () => {
             Email
           </label>
           <input
+            required
             onChange={(e) => setEmail(e.target.value)}
             placeholder="user@example.com"
             type="email"
@@ -52,16 +49,13 @@ const Loginpage = () => {
             Password
           </label>
           <input
-          
+            required
             onChange={(e) => setPassword(e.target.value)}
             placeholder="enter your password"
             type="password"
             id="password"
-            className='inputs'
+            className="inputs"
           />
-          {/* {passwordError && (
-            <p className="text-red-500 text-sm">{passwordError}</p>
-          )} */}
         </div>
 
         <button
@@ -71,7 +65,7 @@ const Loginpage = () => {
            focus:ring focus:border-coral-blue"
           disabled={loading}
         >
-          {loading ? "Signing up..." : "Login"}
+          {loading ? "login please wait..." : "Login"}
         </button>
 
         <p className="text-center py-2 text-md text-gray-500">
@@ -79,14 +73,23 @@ const Loginpage = () => {
         </p>
 
         <button
-        type="button"
-        onClick={()=>signIn('google',{callbackUrl:'/'})}
+          type="button"
+          onClick={() => signIn("google", { callbackUrl: "/" })}
           className="flex justify-center gap-4 w-full bg-gray-800 py-2 rounded-full text-primary"
           disabled={loading}
         >
-          <Image  src={ Google} alt="google logo" width={24} height={24} />
+          <Image src={Google} alt="google logo" width={24} height={24} />
           Login With Google
         </button>
+        <p className="text-center mt-4 text-gray-500">
+          Dont't have an account?{" "}
+          <Link
+            href={"/register"}
+            className="text-coral-blue font-semibold hover:underline"
+          >
+            Register here
+          </Link>
+        </p>
       </form>
     </div>
   );

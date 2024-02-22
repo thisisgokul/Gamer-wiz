@@ -33,13 +33,15 @@ const Navbar = () => {
           <Link className="navlinks" href="/">
             Home
           </Link>
-          <Link className="navlinks" href="/">
-            Menu
-          </Link>
+          {status === "authenticated" && (
+            <Link className="navlinks " href="/profile">
+              Profile
+            </Link>
+          )}
           <Link className="navlinks" href="/about">
             About
           </Link>
-          <Link className="navlinks" href="/">
+          <Link className="navlinks" href="/contact">
             Contact
           </Link>
         </div>
@@ -60,25 +62,43 @@ const Navbar = () => {
         {status === "authenticated" && (
           <>
             <nav className="sm:hidden flex flex-col items-center">
-              <Link href="/">Home</Link>
-              <Link href="/">Menu</Link>
-              <Link href="/about">About</Link>
-              <Link href="/">Contact</Link>
+              <Link className="navlinks" href="/">
+                Home
+              </Link>
+              {status === "authenticated" && (
+                <Link className="navlinks " href="/profile">
+                  Profile
+                </Link>
+              )}
+              <Link className="navlinks" href="/about">
+                About
+              </Link>
+              <Link className="navlinks" href="/contact">
+                Contact
+              </Link>
             </nav>
             <div className="relative">
               <div className="flex items-center">
-              <Link className="flex gap-3  items-center" href={"/profile"}>
-                <h2 className="text-white font-bold italic">{userName}</h2></Link>
+                <Link className="flex gap-3  items-center" href={"/profile"}>
+                  <h2 className="text-white font-bold italic">{userName}</h2>
+                </Link>
+
                 <Image
-                onClick={handleProfileClick} 
+                  onClick={handleProfileClick}
                   src={userData?.image || defaultImage}
                   width={40}
                   height={40}
                   className="rounded-full h-12 w-12 border-4 shadow-xl
-                  border-yellowGreen cursor-pointer sm:block hidden" 
+                  border-yellowGreen cursor-pointer sm:block hidden"
                   alt="profile"
                 />
               </div>
+              <button
+                onClick={() => signOut()}
+                className="sm:hidden mt-2 w-full py-1 text-gray-50 text-center bg-secondary rounded-full"
+              >
+                Logout
+              </button>
               {showProfileOptions && (
                 <div className="absolute top-full right-0 mt-3 sm:block hidden bg-white shadow-md rounded-md py-2 w-40 sm:w-auto">
                   <Link

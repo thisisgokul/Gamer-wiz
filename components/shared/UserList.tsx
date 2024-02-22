@@ -14,7 +14,7 @@ const UserList: React.FC<UserListProps> = ({ onchange, userData }) => {
   const secret = "gokulsubashwydnov@gmail.com"; // put it inside the env
   return (
     <>
-      <div className="flex flex-grow  flex-col items-center gap-4 px-4 py-4">
+      <div className="flex flex-grow flex-col items-center gap-4 px-4 py-4">
         {userData.map(
           (user: User) =>
             user.email !== secret && (

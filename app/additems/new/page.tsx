@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaBackward } from "react-icons/fa";
 import axios from "axios";
-import { uploadImage } from "@/app/utils/cloudinary/uploadImage";;
+import { uploadImage } from "@/app/utils/cloudinary/uploadImage";
 import { toast } from "sonner";
 import ItemForm from "@/components/shared/ItemForm";
 
@@ -23,12 +23,10 @@ const AddItemspage = () => {
   const [price, setPrice] = useState("");
   const [itemname, setItemname] = useState("");
 
-
   useEffect(() => {
     if (!loading && profileData) {
       setIsAdmin(profileData.admin || false);
     }
-  
   }, [loading, profileData, files]);
 
   if (loading) {
@@ -84,12 +82,17 @@ const AddItemspage = () => {
       event.preventDefault();
       if (files.length === 0) {
         toast.error("Please upload at least one image.");
-        return; 
+        return;
       }
-      const formdata = { itemname, description, price, category };  
+      const formdata = { itemname, description, price, category };
       await axios.post("/api/add-items", { formdata, files });
-      [setCategory, setPrice, setDescription, setItemname, 
-      () => setFiles([])].forEach((setter) => setter(""));
+      [
+        setCategory,
+        setPrice,
+        setDescription,
+        setItemname,
+        () => setFiles([]),
+      ].forEach((setter) => setter(""));
       toast.success("Items Created Successfully");
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -100,7 +103,7 @@ const AddItemspage = () => {
   return (
     <>
       {isAdmin && (
-        <>
+        <div className="p-6">
           <ActiveTabs isAdmin={true} />
           <div className="flex mb-8 justify-center  items-center ">
             <Link
@@ -154,13 +157,19 @@ const AddItemspage = () => {
               ))}
             </div>
 
-            <ItemForm onsubmit={handleFormSubmit} setCategory={setCategory}
-            setItemname={setItemname} setDescription={setDescription} setPrice={setPrice}
-             category={category} description={description} price={price}
-            itemname={itemname}
+            <ItemForm
+              onsubmit={handleFormSubmit}
+              setCategory={setCategory}
+              setItemname={setItemname}
+              setDescription={setDescription}
+              setPrice={setPrice}
+              category={category}
+              description={description}
+              price={price}
+              itemname={itemname}
             />
           </div>
-        </>
+        </div>
       )}
     </>
   );

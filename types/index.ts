@@ -43,7 +43,7 @@ export type CardItems ={
   name: string;
   price: string;
   description: string;
-  pictures: string | undefined
+  pictures?: string | undefined
   category:string
 
 }

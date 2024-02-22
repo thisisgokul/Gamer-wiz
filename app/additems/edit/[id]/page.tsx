@@ -38,7 +38,7 @@ const Editpage = () => {
           file: null,
           url: picture,
         }));
-       
+
         setFiles(pictureUrls);
         setLoading(false);
       });
@@ -106,7 +106,7 @@ const Editpage = () => {
           <FaSpinner className="animate-spin" size={50} />
         </div>
       ) : (
-        <>
+        <div className="p-6">
           <ActiveTabs isAdmin={true} />
           <div className="sm:flex sm:flex-col md:flex md:flex-row flex-grow justify-center items-center">
             <button className="bg-secondary flex pr-2 btnHover border-2 border-pink-200 items-center text-white font-semibold shadow-xl rounded-3xl h-32 w-32 cursor-pointer relative">
@@ -164,7 +164,7 @@ const Editpage = () => {
               onclick={handleDeleteItem}
             />
           </div>
-        </>
+        </div>
       )}
     </>
   );

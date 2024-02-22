@@ -1,5 +1,4 @@
 "use client";
-
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -10,8 +9,8 @@ import defaultImage from "@/public/defaultImage.jpg";
 import { userData } from "@/types";
 import AddressForm from "@/components/shared/AddressForm";
 import { toast } from "sonner";
-import Loader from "@/components/helpers/loader";
 import ActiveTabs from "@/components/helpers/ActiveTabs";
+import Loader2 from "@/components/helpers/Loader2";
 
 const Profilepage = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -24,7 +23,6 @@ const Profilepage = () => {
   const session = useSession();
   const { status } = session;
   const sessionUserData = session.data?.user;
-
   const router = useRouter();
 
   useEffect(() => {
@@ -92,11 +90,11 @@ const Profilepage = () => {
   };
 
   return (
-    <div className="padding-x pt-3 bg-darkBlack py-6">
+    <div className="padding-x pt-3 h-screen bg-zinc-200 py-6">
       {status === "loading" ||
         (fetchLoading && (
-          <div className=" items-center h-screen flex flex-col mt-3 ">
-            <Loader />
+          <div className=" items-center justify-center h-screen flex flex-col mt-3 ">
+            <Loader2 />
             <span> Loading...</span>
           </div>
         ))}
@@ -105,7 +103,7 @@ const Profilepage = () => {
           <ActiveTabs isAdmin={isAdmin} />
 
           <div className=" flex gap-3 flex-col md:flex-row items-center justify-center">
-            <div className="p-8 h-1/4 bg-metalicblack rounded-xl shadow-xl">
+            <div className="p-8 h-1/4 bg-zinc-300 rounded-xl shadow-xl">
               <Image
                 src={imageUrl || userData.image || defaultImage}
                 alt="image"

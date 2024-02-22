@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import Navbar from "@/components/shared/Navbar";
 import AuthProvider from "@/context/AuthProvider";
+import Footer from "@/components/shared/Footer";
 
 
 const poppins = Poppins({
@@ -32,6 +33,7 @@ export default function RootLayout({
             <Navbar /> 
           </nav>
           {children}
+          <Footer/>
           </AuthProvider>
       </body>
       <Toaster position="top-center" richColors />

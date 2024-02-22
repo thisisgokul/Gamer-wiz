@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import ActiveTabs from "@/components/helpers/ActiveTabs";
 import UseProfile from "@/components/helpers/UseProfile";
-import Loader from "@/components/helpers/loader";
 import axios from "axios";
 import { toast } from "sonner";
 import { Category } from "@/types";
+import Loader2 from "@/components/helpers/Loader2";
 
 const CategoryPage = () => {
   const { datas: profileData, loading } = UseProfile();
@@ -25,8 +25,8 @@ const CategoryPage = () => {
 
   if (loading) {
     return (
-      <div className="h-screen flex flex-col items-center mt-3">
-        <Loader />
+      <div className="h-screen justify-center flex flex-col items-center">
+        <Loader2 />
         <span>Loading...</span>
       </div>
     );
@@ -94,11 +94,11 @@ const CategoryPage = () => {
   return (
     <>
       {isAdmin && (
-        <>
+        <div className="p-6 bg-zinc-200">
           <ActiveTabs isAdmin={true} />
           {loadingData ? (
-            <div className="h-screen flex flex-col items-center mt-3">
-              <Loader />
+            <div className="h-screen justify-center flex flex-col items-center">
+              <Loader2 />
               <span>Loading...</span>
             </div>
           ) : (
@@ -157,7 +157,7 @@ const CategoryPage = () => {
               </div>
             </div>
           )}
-        </>
+        </div>
       )}
     </>
   );

@@ -4,7 +4,6 @@ import HeroItems from "@/components/shared/HeroItems";
 export default function Home() {
   return (
   <main>
-   
     <section className="padding bg-darkBlack"><Hero/></section>
     <section className=""><HeroItems/></section>
   </main>

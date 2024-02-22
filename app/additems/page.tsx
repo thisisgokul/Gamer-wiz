@@ -1,9 +1,9 @@
 "use client";
 import ActiveTabs from "@/components/helpers/ActiveTabs";
+import Loader2 from "@/components/helpers/Loader2";
 import UseProfile from "@/components/helpers/UseProfile";
 import Loader from "@/components/helpers/loader";
 import ItemCard from "@/components/shared/ItemCard";
-import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoArrowForwardCircle } from "react-icons/io5";
@@ -12,17 +12,17 @@ const AllItemsPage = () => {
   const { datas: profileData, loading } = UseProfile();
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
   const [addedItems, setAddedItems] = useState([]);
+  const [dataLoading, setDataLoading] = useState(false);
 
   const fetchAllItems = async () => {
     try {
+      setDataLoading(true);
       const response = await fetch("/api/add-items", {
-        cache: "no-store", 
+        cache: "no-store",
       });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
       const data = await response.json();
       setAddedItems(data);
+      setDataLoading(false);
     } catch (error) {
       console.error("Error fetching items:", error);
     }
@@ -55,7 +55,7 @@ const AllItemsPage = () => {
   return (
     <>
       {isAdmin && (
-        <>
+        <div className="p-6 h-screen">
           <ActiveTabs isAdmin={true} />
           <div className="flex justify-center  items-center padding-x">
             <Link
@@ -66,15 +66,20 @@ const AllItemsPage = () => {
             </Link>
           </div>
           <div className="flex justify-center mt-10">
-            <div className="grid sm:grid-cols-4  grid-cols-2 gap-4">
-              {addedItems.map((item, index) => (
-                <ItemCard key={index} item={item} />
-              ))}
-            </div>
+            {dataLoading ? (
+              <div className="text-xl font-bold">
+                <Loader2 />
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-4  grid-cols-2 gap-4">
+                {addedItems.map((item, index) => (
+                  <ItemCard key={index} item={item} />
+                ))}
+              </div>
+            )}
           </div>
-        </>
+        </div>
       )}
-  
     </>
   );
 };

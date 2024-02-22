@@ -7,12 +7,14 @@ import bcrypt from "bcrypt"
 export async function POST(request: Request) {
   const data = await request.json();
   const { email, password,name } = data;
-  console.log("name from the register:::",name,email);
-  
-
+ 
   try {
     await connectDatabase();
 
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return Response.json({ error: "Email already exists" });
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const createdUser = await User.create({

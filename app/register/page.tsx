@@ -6,6 +6,7 @@ import Google from "@/public/Google2.png";
 import axios from "axios";
 import { toast } from "sonner";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -25,10 +26,18 @@ const RegisterPage = () => {
     setLoading(true);
 
     try {
-      await axios.post("/api/register", {name, email, password });
+      const response = await axios.post("/api/register", {
+        name,
+        email,
+        password,
+      });
       setLoading(false);
-      toast.success("User has been created");
-      router.push("/login");
+      if (response.data.error) {
+        toast.error(response.data.error);
+      } else {
+        toast.success("User has been created");
+        router.push("/login");
+      }
     } catch (error) {
       console.error("Registration failed:", error);
       setLoading(false);
@@ -111,14 +120,24 @@ const RegisterPage = () => {
         </p>
 
         <button
-        type="submit"
-        onClick={()=>signIn('google',{callbackUrl:'/'})}
+          type="submit"
+          onClick={() => signIn("google", { callbackUrl: "/" })}
           className="flex justify-center gap-4 w-full bg-gray-800 py-2 rounded-full text-primary"
           disabled={loading}
         >
           <Image src={Google} alt="google logo" width={24} height={24} />
           Login With Google
         </button>
+        
+        <p className="text-center mt-4 text-gray-500">
+          Already have an account?{" "}
+          <Link
+            href={"/login"}
+            className="text-coral-blue font-semibold hover:underline"
+          >
+            Login here
+          </Link>
+        </p>
       </form>
     </div>
   );

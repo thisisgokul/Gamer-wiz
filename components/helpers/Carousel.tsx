@@ -35,7 +35,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
             index === currentIndex ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <Image src={imageUrl} alt={`Image ${index}`} layout="fill" objectFit="cover" />
+          <img src={imageUrl} alt={`Image ${index}`} className='object-cover w-full h-full'/>
         </div>
       ))}
     </div>

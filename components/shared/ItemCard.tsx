@@ -6,7 +6,11 @@ import { MdEdit } from "react-icons/md";
 const ItemCard: React.FC<{ item: CardItems }> = ({ item }) => {
   const imageUrl = item.pictures?.[0];
   return (
-    <div className="relative w-36 sm:w-64 flex-wrap bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+    <div
+      className="relative w-36 sm:w-64 flex-wrap bg-white h-screen shadow-lg rounded-lg 
+    overflow-hidden hover:shadow-xl transition duration-300 ease-in-out
+     transform hover:-translate-y-1 hover:scale-105"
+    >
       <img
         className="w-full h-64 object-cover"
         src={imageUrl}

@@ -34,6 +34,9 @@ const ActiveTabs = ({ isAdmin }:ActiveTabsProps) => {
           <Link href="/users" className={` ${path === "/users" ? "Activetabs" : "tabs"}`}>
             Users
           </Link>
+          <Link href="/all-orders" className={` ${path === "/all-orders" ? "Activetabs" : "tabs"}`}>
+            All Orders
+          </Link>
         </>
       )}
     </div>
