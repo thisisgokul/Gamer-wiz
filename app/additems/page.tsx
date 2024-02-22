@@ -55,7 +55,7 @@ const AllItemsPage = () => {
   return (
     <>
       {isAdmin && (
-        <div className="p-6 h-screen">
+        <div className="p-6">
           <ActiveTabs isAdmin={true} />
           <div className="flex justify-center  items-center padding-x">
             <Link
