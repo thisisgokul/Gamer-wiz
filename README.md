@@ -2,7 +2,7 @@
 
 Welcome to GamerWiz, your go-to web application for purchasing games hassle-free! Whether you're a casual gamer or a hardcore enthusiast, GamerWiz has got you covered. With seamless integration of features and a user-friendly interface, buying games has never been easier.
 
-**Hosted Link:** [GamerWiz](https://your-hosted-link.com)
+**Hosted Link:** [GamerWiz](https://gamer-wiz.vercel.app/)
 
 ## Features
 
@@ -40,10 +40,10 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 ![Payment section](/public/screenshots/img3.png)
 
 ### Profile Page
-![Profile Page]((/public/screenshots/img6.png)
+![Profile Page](/public/screenshots/img6.png)
 
 ### Admin options
-![Profile Page]((/public/screenshots/img5.png)
+![Profile Page](/public/screenshots/img5.png)
 
 ## Getting Started
 To get started with GamerWiz, follow these simple steps:
