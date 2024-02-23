@@ -6,11 +6,12 @@ import Link from "next/link";
 import defaultImage from "@/public/defaultImage.jpg";
 
 const Navbar = () => {
+  const session = useSession();
   const [isNavOpen, setNavOpen] = useState(false);
   const [showProfileOptions, setShowProfileOptions] = useState(false);
-  const session = useSession();
   const userData = session.data?.user;
-  let userName = userData?.name || userData?.email;
+  const isAuthenticated = session.status === "authenticated";
+  const userName = userData?.name || userData?.email;
 
   const handleToggleNav = () => {
     setNavOpen(!isNavOpen);
@@ -31,7 +32,7 @@ const Navbar = () => {
           <Link className="navlinks" href="/">
             Home
           </Link>
-          {session.status === "authenticated" && (
+          {isAuthenticated && (
             <>
               <Link className="navlinks " href="/profile">
                 Profile
@@ -62,13 +63,13 @@ const Navbar = () => {
           isNavOpen ? "flex flex-col" : "hidden"
         } sm:flex gap-3 text-gray-500  text-lg font-semibold items-center`}
       >
-        {session.status === "authenticated" && (
+        {isAuthenticated && (
           <>
             <nav className="sm:hidden flex flex-col items-center">
               <Link className="navlinks" href="/">
                 Home
               </Link>
-              {session.status === "authenticated" && (
+              {isAuthenticated && (
                 <>
                   <Link className="navlinks " href="/profile">
                     Profile
@@ -129,7 +130,7 @@ const Navbar = () => {
             </div>
           </>
         )}
-        {session.status === "unauthenticated" && (
+        {!isAuthenticated && (
           <>
             <Link href="/login" className="text-gray-50 font-bold">
               Login
