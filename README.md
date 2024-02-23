@@ -37,7 +37,7 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 
 ### Game Details Page
 ![Payment section](/public/screenshots/img3.png)
-![Payment section](/public/screenshots/img3.png)
+![Payment section](/public/screenshots/img4.png)
 
 ### Profile Page
 ![Profile Page](/public/screenshots/img6.png)
