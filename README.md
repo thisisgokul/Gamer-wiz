@@ -32,18 +32,26 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 ## Screenshots
 
 ### Home Page
-![Hero section](/public/screenshots/img1.png)
-![Games section](/public/screenshots/img2.png)
+<div align="center">
+  <img src="/public/screenshots/img1.png" alt="Hero section" width="400"/>
+  <img src="/public/screenshots/img2.png" alt="Games section" width="400"/>
+</div>
 
 ### Game Details Page
-![Payment section](/public/screenshots/img3.png)
-![Payment section](/public/screenshots/img4.png)
+<div align="center">
+  <img src="/public/screenshots/img3.png" alt="Payment section" width="400"/>
+  <img src="/public/screenshots/img4.png" alt="Payment section" width="400"/>
+</div>
 
 ### Profile Page
-![Profile Page](/public/screenshots/img6.png)
+<div align="center">
+  <img src="/public/screenshots/img6.png" alt="Profile Page" width="400"/>
+</div>
 
-### Admin options
-![Profile Page](/public/screenshots/img5.png)
+### Admin Options
+<div align="center">
+  <img src="/public/screenshots/img5.png" alt="Admin Options" width="400"/>
+</div>
 
 ## Getting Started
 To get started with GamerWiz, follow these simple steps:
@@ -54,7 +62,6 @@ To get started with GamerWiz, follow these simple steps:
 5. Set up authentication with NextAuth.js and configure authentication providers.
 6. Run the application using `npm run dev`.
 7. Start exploring and enjoying the world of gaming with GamerWiz!
-
 
 ## Feedback
 We value your feedback! If you have any suggestions, feature requests, or encounter any issues while using GamerWiz, please don't hesitate to reach out to us.
