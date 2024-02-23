@@ -4,6 +4,10 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 
 **Hosted Link:** [GamerWiz](https://gamer-wiz.vercel.app/)
 
+**Note:** To access super admin features, login with the following credentials: 
+- **Email:** testuser@example.com 
+- **Password:** testuser123
+
 ## Features
 
 ### User Features:
