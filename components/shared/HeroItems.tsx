@@ -81,8 +81,10 @@ const HeroItems = () => {
             className="sm:px-14 px-0 py-2 border mt-2 text-xl border-yellowGlight rounded-md
              focus:outline-none bg-metalicblack text-white"
           />
-          <div className="ml-2 hidden sm:block text-yellowGlight bg-metalicblack
-           px-2 py-2 border-2 border-yellowGreen rounded-md mt-2 ">
+          <div
+            className="ml-2 hidden sm:block text-yellowGlight bg-metalicblack
+           px-2 py-2 border-2 border-yellowGreen rounded-md mt-2 "
+          >
             <BiSearch size={28} />
           </div>
         </div>
@@ -103,9 +105,9 @@ const HeroItems = () => {
           </select>
         </div>
       </div>
-      <div className="padding grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-screen gap-8">
+      <div className="padding grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-screen sm:w-[200vh] gap-8">
         {loading ? (
-          <div className="flex justify-center items-center w-screen flex-col">
+          <div className="flex justify-center items-center w-screen sm:w-[200vh] flex-col">
             <Loader />
             <p className="text-white ">Loading...</p>
           </div>
