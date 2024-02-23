@@ -7,7 +7,8 @@ import Link from "next/link";
 
 const Hero = () => {
   const session = useSession();
-  const { status } = session;
+  const isAuthenticated = session.status === "authenticated";
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 items-center md:items-start">
       <div className="flex flex-col justify-center md:mt-14 px-8">
@@ -20,39 +21,24 @@ const Hero = () => {
           adventure to new heights.
         </p>
         <div className="flex sm:justify-start justify-center items-center gap-2">
-          {status === "authenticated" ? (
+          <Link href={isAuthenticated ? "#" : "/login"}>
             <button className="bg-coral-blue px-3 py-1 rounded-full flex btnHover text-primary text-sm md:px-4 md:py-2 md:text-base">
-              Order now{" "}
+              {isAuthenticated ? "Order now" : "Login"}
               <span>
                 <Image src={arrow} alt="arrow" />
               </span>
             </button>
-          ) : (
-            <Link href={"/login"}>
-              <button className="bg-coral-blue px-3 py-1 rounded-full flex btnHover text-primary text-sm md:px-4 md:py-2 md:text-base">
-                Login{" "}
-                <span>
-                  <Image src={arrow} alt="arrow" />
-                </span>
-              </button>
-            </Link>
-          )}
-          {status === "authenticated" ? (
+          </Link>
+          <Link href={isAuthenticated ? "#" : "/register"}>
             <button className="bg-secondary text-white px-3 py-1 rounded-full text-sm md:px-4 md:py-2 md:text-base">
-              Explore More
+              {isAuthenticated ? "Explore More" : "Register"}
             </button>
-          ) : (
-            <Link href={"/register"}>
-              <button className="bg-secondary text-white px-3 py-1 rounded-full text-sm md:px-4 md:py-2 md:text-base">
-                Register
-              </button>
-            </Link>
-          )}
+          </Link>
         </div>
       </div>
       <div className="relative h-60 sm:h-[600px] w-full overflow-hidden">
         <div className="animate-heroMove ">
-          <Image src={hero} alt="hero" className="h-60 sm:h-[600px] " />
+          <Image src={hero} alt="hero" className="h-60 sm:h-[600px]" />
         </div>
       </div>
     </div>

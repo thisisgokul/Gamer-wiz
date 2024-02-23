@@ -12,8 +12,6 @@ const Navbar = () => {
   const userData = session.data?.user;
   let userName = userData?.name || userData?.email;
 
-  const { status } = session;
-
   const handleToggleNav = () => {
     setNavOpen(!isNavOpen);
   };
@@ -33,7 +31,7 @@ const Navbar = () => {
           <Link className="navlinks" href="/">
             Home
           </Link>
-          {status === "authenticated" && (
+          {session.status === "authenticated" && (
             <>
               <Link className="navlinks " href="/profile">
                 Profile
@@ -64,13 +62,13 @@ const Navbar = () => {
           isNavOpen ? "flex flex-col" : "hidden"
         } sm:flex gap-3 text-gray-500  text-lg font-semibold items-center`}
       >
-        {status === "authenticated" && (
+        {session.status === "authenticated" && (
           <>
             <nav className="sm:hidden flex flex-col items-center">
               <Link className="navlinks" href="/">
                 Home
               </Link>
-              {status === "authenticated" && (
+              {session.status === "authenticated" && (
                 <>
                   <Link className="navlinks " href="/profile">
                     Profile
@@ -110,8 +108,10 @@ const Navbar = () => {
                 Logout
               </button>
               {showProfileOptions && (
-                <div className="absolute top-full z-50 right-0 mt-3 sm:block hidden
-                 bg-white shadow-md rounded-md py-2 w-40 sm:w-auto">
+                <div
+                  className="absolute top-full z-50 right-0 mt-3 sm:block hidden
+                 bg-white shadow-md rounded-md py-2 w-40 sm:w-auto"
+                >
                   <Link
                     href="/profile"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
@@ -129,7 +129,7 @@ const Navbar = () => {
             </div>
           </>
         )}
-        {status === "unauthenticated" && (
+        {session.status === "unauthenticated" && (
           <>
             <Link href="/login" className="text-gray-50 font-bold">
               Login
