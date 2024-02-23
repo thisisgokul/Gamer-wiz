@@ -103,7 +103,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={() => signOut()}
-                className="sm:hidden mt-2 w-full py-1 text-gray-50 text-center
+                className="sm:hidden px-3 mt-2 w-full py-1 text-gray-50 text-center
                  bg-secondary rounded-full"
               >
                 Logout
