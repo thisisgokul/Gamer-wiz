@@ -52,7 +52,7 @@ export const authOptions={
                 const userExists = await User.findOne({ email });
       
                 if (!userExists) {
-                  const res = await fetch("https://gamer-wiz.vercel.app/api/google", {
+                  const res = await fetch("https://gamer-wiz.vercel.app/api/google", { // use localhost for development
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",

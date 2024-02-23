@@ -56,7 +56,7 @@ const SinglePage = () => {
     try {
       if (sessionStatus === "unauthenticated") {
         toast.error("Please login to continue");
-        router.push("/my-orders");
+        router.push("/login");
         return;
       }
       toast.info("Loading payment, please wait...");
@@ -95,7 +95,7 @@ const SinglePage = () => {
         price: item?.price,
       };
       await axios.post("/api/create-order/", data);
-      router.push("/");
+      router.push("/my-orders");
     } catch (error) {
       console.error("Error during createOrder:", error);
       toast.error("Failed to create order");
