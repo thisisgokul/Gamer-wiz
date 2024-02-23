@@ -3,16 +3,13 @@ export const handleError = (error: unknown) => {
     throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
   }
 
-  export  const loadScript = (src:string) => {
-    return new Promise((resolve) => {
+  export async function loadScript(src: string) {
+    return new Promise<void>((resolve, reject) => {
       const script = document.createElement("script");
       script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-     document.body.appendChild(script);
-   });
-};
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = (error) => reject(error);
+      document.body.appendChild(script);
+    });
+  }

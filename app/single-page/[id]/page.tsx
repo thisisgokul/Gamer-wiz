@@ -1,28 +1,26 @@
 "use client";
 import Carousel from "@/components/helpers/Carousel";
 import Loader from "@/components/helpers/loader";
-import { CardItems } from "@/types";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { useSession } from "next-auth/react";
-import { loadScript } from "@/lib/utils";
 import SingleItemTab from "@/components/shared/SingleItemTab";
 import Footer from "@/components/shared/Footer";
+import { CardItems } from "@/types";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { toast } from "sonner";
+import React, { useEffect, useState } from "react";
+import { loadScript } from "@/lib/utils";
+import { useParams } from "next/navigation";
 
 const SinglePage = () => {
   const { id } = useParams();
-  const [pictures, setPictures] = useState([]);
+  const [pictures, setPictures] = useState<string[]>([]);
   const [item, setItem] = useState<CardItems | null>(null);
   const [loading, setLoading] = useState(false);
-
-  const session = useSession();
-  const { status } = session;
-  const userData = session.data?.user;
-  let email = userData?.email;
-  let userName = userData?.name;
-
+  const { data: sessionData, status: sessionStatus } = useSession();
+  const userData = sessionData?.user;
+  const email = userData?.email;
+  const userName = userData?.name;
   const router = useRouter();
 
   useEffect(() => {
@@ -30,46 +28,38 @@ const SinglePage = () => {
     loadScript("https://checkout.razorpay.com/v1/checkout.js");
   }, []);
 
-  function fetchCategoryById() {
+  async function fetchCategoryById() {
     setLoading(true);
     try {
-      if (!id) {
-        return;
-      }
-      fetch("/api/add-items/single-data", {
+      if (!id) return;
+      const response = await fetch("/api/add-items/single-data", {
         cache: "no-store",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ _id: id }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          setItem(data);
-          const pictureUrls = data.pictures.map((picture: string) => picture);
-          setPictures(pictureUrls);
-          setLoading(false);
-        });
+      });
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      setItem(data);
+      setPictures(data.pictures.map((picture: string) => picture));
     } catch (error) {
       console.error("An error occurred during fetchCategoryById:", error);
+      toast.error("Failed to fetch item details");
+    } finally {
       setLoading(false);
     }
   }
 
   const handlePayment = async () => {
     try {
-      if (status === "unauthenticated") {
-        toast.error("please login to continue");
-        router.push("/");
+      if (sessionStatus === "unauthenticated") {
+        toast.error("Please login to continue");
+        router.push("/my-orders");
         return;
       }
-      toast.info("loading payment please wait");
+      toast.info("Loading payment, please wait...");
       const response = await axios.post("/api/create-payment", {
         amount: item?.price,
       });
@@ -79,13 +69,10 @@ const SinglePage = () => {
         key: process.env.NEXT_PUBLIC_key_id,
         amount: item?.price,
         currency: "INR",
-        name: "GamerWiz pvt limited",
+        name: "GamerWiz Pvt Limited",
         description: "Game Payment",
-
         order_id: order.id,
-        handler: function () {
-          createOrder();
-        },
+        handler: createOrder,
         prefill: {
           email: email,
         },
@@ -93,7 +80,8 @@ const SinglePage = () => {
       const paymentObject = new (window as any).Razorpay(options);
       paymentObject.open();
     } catch (error) {
-      console.log(error);
+      console.error("Error during handlePayment:", error);
+      toast.error("Failed to initiate payment");
     }
   };
 
@@ -109,7 +97,8 @@ const SinglePage = () => {
       await axios.post("/api/create-order/", data);
       router.push("/");
     } catch (error) {
-      console.log(error);
+      console.error("Error during createOrder:", error);
+      toast.error("Failed to create order");
     }
   };
 
@@ -123,7 +112,7 @@ const SinglePage = () => {
         <>
           <Carousel images={pictures} />
           <SingleItemTab item={item} onclick={handlePayment} />
-          <Footer/>
+          <Footer />
         </>
       )}
     </div>
