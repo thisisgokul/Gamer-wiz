@@ -1,54 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-    }
-    h1 {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 28px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 15px;
-    }
-    h3 {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
-    }
-    p {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-    a {
-      color: #007bff;
-    }
-    img {
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 15px;
-    }
-    div.center {
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
 # GamerWiz - Your Ultimate Destination for Gaming!
 
 Welcome to GamerWiz, your go-to web application for purchasing games hassle-free! Whether you're a casual gamer or a hardcore enthusiast, GamerWiz has got you covered. With seamless integration of features and a user-friendly interface, buying games has never been easier.
@@ -83,24 +32,24 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 ## Screenshots
 
 ### Home Page
-<div class="center">
+<div align="center">
   <img src="/public/screenshots/img1.png" alt="Hero section" width="400"/>
   <img src="/public/screenshots/img2.png" alt="Games section" width="400"/>
 </div>
 
 ### Game Details Page
-<div class="center">
+<div align="center">
   <img src="/public/screenshots/img3.png" alt="Payment section" width="400"/>
   <img src="/public/screenshots/img4.png" alt="Payment section" width="400"/>
 </div>
 
 ### Profile Page
-<div class="center">
+<div align="center">
   <img src="/public/screenshots/img6.png" alt="Profile Page" width="400"/>
 </div>
 
 ### Admin Options
-<div class="center">
+<div align="center">
   <img src="/public/screenshots/img5.png" alt="Admin Options" width="400"/>
 </div>
 
@@ -118,6 +67,3 @@ To get started with GamerWiz, follow these simple steps:
 We value your feedback! If you have any suggestions, feature requests, or encounter any issues while using GamerWiz, please don't hesitate to reach out to us.
 
 Happy Gaming with GamerWiz! 🎮✨
-
-</body>
-</html>
