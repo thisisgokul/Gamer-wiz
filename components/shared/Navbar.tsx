@@ -6,11 +6,12 @@ import Link from "next/link";
 import defaultImage from "@/public/defaultImage.jpg";
 
 const Navbar = () => {
-  const session = useSession();
+  const { data: session } = useSession();
   const [isNavOpen, setNavOpen] = useState(false);
   const [showProfileOptions, setShowProfileOptions] = useState(false);
-  const userData = session.data?.user;
-  const isAuthenticated = session.status === "authenticated";
+  const userData = session?.user; 
+  const isAuthenticated = !!session;
+
   const userName = userData?.name || userData?.email;
 
   const handleToggleNav = () => {
@@ -32,7 +33,7 @@ const Navbar = () => {
           <Link className="navlinks" href="/">
             Home
           </Link>
-          {isAuthenticated && (
+          {isAuthenticated ? (
             <>
               <Link className="navlinks " href="/profile">
                 Profile
@@ -41,7 +42,7 @@ const Navbar = () => {
                 My-Orders
               </Link>
             </>
-          )}
+          ) : null}
           <Link className="navlinks" href="/about">
             About
           </Link>
@@ -63,13 +64,13 @@ const Navbar = () => {
           isNavOpen ? "flex flex-col" : "hidden"
         } sm:flex gap-3 text-gray-500  text-lg font-semibold items-center`}
       >
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <>
             <nav className="sm:hidden flex flex-col items-center">
               <Link className="navlinks" href="/">
                 Home
               </Link>
-              {isAuthenticated && (
+              {isAuthenticated ? (
                 <>
                   <Link className="navlinks " href="/profile">
                     Profile
@@ -78,7 +79,7 @@ const Navbar = () => {
                     My-Orders
                   </Link>
                 </>
-              )}
+              ) : null}
               <Link className="navlinks" href="/about">
                 About
               </Link>
@@ -129,8 +130,7 @@ const Navbar = () => {
               )}
             </div>
           </>
-        )}
-        {!isAuthenticated && (
+        ) : (
           <>
             <Link href="/login" className="text-gray-50 font-bold">
               Login
