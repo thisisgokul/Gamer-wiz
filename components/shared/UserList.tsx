@@ -43,7 +43,7 @@ const UserList: React.FC<UserListProps> = ({ onchange, userData }) => {
                     type="checkbox"
                     id="adminPermission"
                     className="form-checkbox h-5 w-5 shadow-xl rounded-xl text-indigo-800 mr-2"
-                    defaultChecked={user.admin}
+                    checked={user.admin}
                   />
                   Admin: {user.admin ? "True" : "false"}
                 </label>

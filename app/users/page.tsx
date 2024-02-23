@@ -79,7 +79,7 @@ const AllUsersPage = () => {
         <div className="p-6 bg-zinc-200">
           <ActiveTabs isAdmin={true} />
           {dataLoading ? (
-            <div className="text-xl font-bold">
+            <div className="text-xl flex justify-center font-bold">
               <Loader2 />
             </div>
           ) : (
