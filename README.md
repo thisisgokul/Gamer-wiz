@@ -33,13 +33,13 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 
 ### Home Page
 <div align="center">
-  <img src="/public/screenshots/img1.png" alt="Hero section" width="400"/>
+  <img src="/public/screenshots/img1.png" alt="Hero section" width="400" style="margin-right: 20px;"/>
   <img src="/public/screenshots/img2.png" alt="Games section" width="400"/>
 </div>
 
 ### Game Details Page
 <div align="center">
-  <img src="/public/screenshots/img3.png" alt="Payment section" width="400"/>
+  <img src="/public/screenshots/img3.png" alt="Payment section" width="400" style="margin-right: 20px;"/>
   <img src="/public/screenshots/img4.png" alt="Payment section" width="400"/>
 </div>
 
@@ -50,8 +50,8 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 
 ### Admin Options
 <div align="center">
+  <img src="/public/screenshots/img7.png" alt="Profile Page" width="400" style="margin-right: 20px;"/>
   <img src="/public/screenshots/img5.png" alt="Admin Options" width="400"/>
-  <img src="/public/screenshots/img7.png" alt="Admin Options" width="400"/>
 </div>
 
 ## Getting Started
