@@ -81,8 +81,10 @@ const HeroItems = () => {
             className="sm:px-14 px-0 py-2 border mt-2 text-xl border-yellowGlight rounded-md
              focus:outline-none bg-metalicblack text-white"
           />
-          <div className="ml-2 hidden sm:block text-yellowGlight bg-metalicblack
-           px-2 py-2 border-2 border-yellowGreen rounded-md mt-2 ">
+          <div
+            className="ml-2 hidden sm:block text-yellowGlight bg-metalicblack
+           px-2 py-2 border-2 border-yellowGreen rounded-md mt-2 "
+          >
             <BiSearch size={28} />
           </div>
         </div>
