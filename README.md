@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GamerWiz - Your Ultimate Destination for Gaming!
+
+Welcome to GamerWiz, your go-to web application for purchasing games hassle-free! Whether you're a casual gamer or a hardcore enthusiast, GamerWiz has got you covered. With seamless integration of features and a user-friendly interface, buying games has never been easier.
+
+**Hosted Link:** [GamerWiz](https://gamer-wiz.vercel.app/)
+
+## Features
+
+### User Features:
+- **Game Purchase:** Browse through our extensive collection of games and make purchases effortlessly.
+- **Authentication:** NextAuth.js provides authentication, including Google authentication and robust authentication features.
+- **Profile Management:** Update your profile information including address, profile picture, and name.
+- **Secure Payments:** Utilize Razorpay for secure and convenient payment transactions.
+- **Order Tracking:** Keep track of your orders and their status.
+- **Search and Filter:** Easily find your favorite games using search and filter options.
+
+### Admin Features:
+- **Game Management:** Admins can add, edit, and update games within the application.
+- **User Management:** Super admins can grant permissions to users to become admins, enabling them to manage the platform effectively.
+
+## Integrations
+- **Cloudinary:** Seamlessly upload and manage profile pictures with Cloudinary integration.
+- **Razorpay:** Secure payment processing for a smooth checkout experience.
+
+## Technologies Used
+- **Next.js:** For building fast and scalable React applications.
+- **TypeScript:** To ensure robust type checking and enhanced developer experience.
+- **MongoDB:** A flexible and scalable NoSQL database for efficient data management.
+- **Tailwind CSS:** Utilized for modern and responsive styling, providing a sleek UI.
+- **NextAuth.js:** For authentication, including Google authentication and other robust authentication features.
+
+## Screenshots
+
+### Home Page
+<div align="center">
+  <img src="/public/screenshots/img1.png" alt="Hero section" width="400"/>
+  <img src="/public/screenshots/img2.png" alt="Games section" width="400"/>
+</div>
+
+### Game Details Page
+<div align="center">
+  <img src="/public/screenshots/img3.png" alt="Payment section" width="400"/>
+  <img src="/public/screenshots/img4.png" alt="Payment section" width="400"/>
+</div>
+
+### Profile Page
+<div align="center">
+  <img src="/public/screenshots/img6.png" alt="Profile Page" width="400"/>
+</div>
+
+### Admin Options
+<div align="center">
+  <img src="/public/screenshots/img5.png" alt="Admin Options" width="400"/>
+  <img src="/public/screenshots/img7.png" alt="Admin Options" width="400"/>
+</div>
 
 ## Getting Started
+To get started with GamerWiz, follow these simple steps:
+1. Clone this repository to your local machine.
+2. Install dependencies using `npm install`.
+3. Set up your MongoDB database and configure the connection.
+4. Configure your Cloudinary and Razorpay API keys.
+5. Set up authentication with NextAuth.js and configure authentication providers.
+6. Run the application using `npm run dev`.
+7. Start exploring and enjoying the world of gaming with GamerWiz!
 
-First, run the development server:
+## Feedback
+We value your feedback! If you have any suggestions, feature requests, or encounter any issues while using GamerWiz, please don't hesitate to reach out to us.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Happy Gaming with GamerWiz! 🎮✨
