@@ -88,8 +88,8 @@ const Navbar = () => {
             </nav>
             <div className="relative">
               <div className="flex items-center">
-                <Link className="flex gap-3 items-center" href={"/profile"}>
-                  <h2 className="text-white font-bold italic">{userName}</h2>
+                <Link className="flex gap-3 justify-center items-center" href={"/profile"}>
+                  <h2 className="text-white font-bold italic">Hi, {userName}</h2>
                 </Link>
                 <Image
                   onClick={handleProfileClick}
