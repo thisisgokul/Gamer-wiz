@@ -51,6 +51,7 @@ Welcome to GamerWiz, your go-to web application for purchasing games hassle-free
 ### Admin Options
 <div align="center">
   <img src="/public/screenshots/img5.png" alt="Admin Options" width="400"/>
+  <img src="/public/screenshots/img7.png" alt="Admin Options" width="400"/>
 </div>
 
 ## Getting Started
