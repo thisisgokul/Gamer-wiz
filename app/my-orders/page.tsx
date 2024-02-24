@@ -30,11 +30,13 @@ const MyOrderPage: React.FC = () => {
   return (
     <>
       <div className="container bg-darkBlack h-screen px-4 py-8 mx-auto flex flex-col items-center">
-        <h1 className="text-3xl font-bold mb-4 text-zinc-300">My Orders</h1>
+        <h1 className="text-4xl font-bold mb-4 text-zinc-300">My Orders</h1>
         {loading ? (
           <div className="flex justify-center items-center">
             <Loader />
           </div>
+        ) : items.length === 0 ? (
+          <p className="text-white text-lg font-semibold">No orders found.</p>
         ) : (
           items.map((order) => <OrderItem key={order._id} order={order} />)
         )}
