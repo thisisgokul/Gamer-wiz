@@ -94,7 +94,7 @@ const HeroItems = () => {
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="px-14 py-2 cursor-pointer border mt-2 text-xl border-yellowGlight rounded-md focus:outline-none bg-metalicblack text-white"
           >
-            <option value="">Select Category</option>
+            <option value="">All Category</option>
             {Array.from(
               new Set(items.map((data: CardItems) => data.category))
             ).map((category, index) => (
